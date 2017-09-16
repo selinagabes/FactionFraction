@@ -1,0 +1,12 @@
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\bin\Debug\netcoreapp2.0\FactionFraction.deps.json
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\bin\Debug\netcoreapp2.0\FactionFraction.runtimeconfig.json
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\bin\Debug\netcoreapp2.0\FactionFraction.runtimeconfig.dev.json
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\bin\Debug\netcoreapp2.0\FactionFraction.dll
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\bin\Debug\netcoreapp2.0\FactionFraction.pdb
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.csprojResolveAssemblyReference.cache
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.csproj.CoreCompileInputs.cache
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.AssemblyInfoInputs.cache
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.AssemblyInfo.cs
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.dll
+c:\users\selinagabes\source\repos\FactionFraction\FactionFraction\obj\Debug\netcoreapp2.0\FactionFraction.pdb
