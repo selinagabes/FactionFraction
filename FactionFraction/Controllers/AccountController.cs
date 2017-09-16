@@ -232,7 +232,8 @@ namespace FactionFraction.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    //TODO:: redirect to group member creation
+                    return RedirectToAction(nameof(GroupMembersController.Create),"GroupMembers");
                 }
                 AddErrors(result);
             }
