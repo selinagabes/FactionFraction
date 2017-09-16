@@ -12,9 +12,10 @@ using System;
 namespace FactionFraction.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170916224917_Assoc_grp_mem_w_aspnetuserid")]
+    partial class Assoc_grp_mem_w_aspnetuserid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

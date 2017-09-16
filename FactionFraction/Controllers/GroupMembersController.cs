@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FactionFraction.Data;
 using FactionFraction.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FactionFraction.Controllers
 {
+    [Authorize]
     public class GroupMembersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -54,13 +57,14 @@ namespace FactionFraction.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DesiredGrade,FinalGrade")] GroupMember groupMember)
+        public async Task<IActionResult> Create([Bind("Id,Name,DesiredGrade")] GroupMember groupMember)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(groupMember);
+                var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                groupMember.AspNetUserId = aspNetUserId;
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(AssignedTasksController.Create), "Create");
+                return RedirectToAction(nameof(Index));
             }
             return View(groupMember);
         }

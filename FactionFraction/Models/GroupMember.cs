@@ -15,5 +15,6 @@ namespace FactionFraction.Models
         public float FinalGrade { get; set; }
         public ICollection<AssignedTask> AssignedTasks { get; set; }
         public ICollection<ProposedMinute> ProposedMinutes { get; set; }
+        public string AspNetUserId { get; set; }
     }
 }

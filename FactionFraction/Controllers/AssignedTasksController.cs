@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FactionFraction.Data;
 using FactionFraction.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FactionFraction.Controllers
 {
+    [Authorize]
     public class AssignedTasksController : Controller
     {
         private readonly ApplicationDbContext _context;
