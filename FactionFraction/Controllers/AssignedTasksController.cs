@@ -149,5 +149,30 @@ namespace FactionFraction.Controllers
         {
             return _context.AssignedTasks.Any(e => e.Id == id);
         }
+
+
+        // MARK: - Utility functions
+        // Determine sum of an array sum grades
+        static double SumGrades(int[] grades) {
+            
+            int total = 0;
+            for (int i = 0; i < grades.Length; ++i) {
+                total += grades[i];
+            }
+
+            return total;
+        }
+
+
+        // Determine average grade from all submitted
+        static double AverageGrade(int[] grades) {
+            return Utility.SumGrades(grades) / grades.Length;    
+        }
+
+
+        // Determine the percentage workload given a desired grade
+        static double DetermineWorkPercentage(int[] grades, int grade) {
+            return grade / Utility.SumGrades(grades);
+        } 
     }
 }
