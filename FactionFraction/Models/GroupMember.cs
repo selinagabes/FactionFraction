@@ -14,7 +14,8 @@ namespace FactionFraction.Models
         public float DesiredGrade { get; set; }
         public float FinalGrade { get; set; }
         public ICollection<AssignedTask> AssignedTasks { get; set; }
-        public ICollection<ProposedMinute> ProposedMinutes { get; set; }
         public string AspNetUserId { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
     }
 }

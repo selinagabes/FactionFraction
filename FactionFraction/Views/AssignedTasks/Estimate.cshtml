@@ -1,0 +1,53 @@
+﻿@model FactionFraction.Models.EstimateViewModel
+@{
+    ViewData["Title"] = "Edit";
+    int counter = 0;
+}
+<h1>Estimate Minutes</h1>
+<h4>How long would it take each member to complete this task?</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Estimate">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        @foreach (var m in Model.GroupMemberNames)
+                        {
+                            <th>@m</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.TaskTitles.Count; i++)
+                    {
+
+                        <tr>
+                            <td>@Model.TaskTitles[i]</td>
+                            @for (int j = 0; j < Model.GroupMemberNames.Count; j++)
+                            {
+                                <td>
+                                    @Html.TextBoxFor(model => Model.ProposedMinutes[counter].Length, new { @class = "form-control" })
+                                    @Html.HiddenFor(model => Model.ProposedMinutes[counter].TaskId)
+                                    @Html.HiddenFor(model => Model.ProposedMinutes[counter].GroupMemberId)
+                                </td>
+                                ++counter;
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

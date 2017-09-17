@@ -1,0 +1,96 @@
+﻿.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    line-height: 200px;
+    text-align: center;
+    background: #77dd77;
+    margin: auto;
+}
+
+.btn-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 15px;
+    color: #fff;
+    line-height: 100px;
+    text-align: center;
+    background: #77dd77;
+    margin: auto;
+}
+
+.text-pretty {
+    color: #fff;
+}
+
+.circle-toggle {
+    text-decoration: none !important;
+}
+
+.navbar-pretty {
+    background-color: #a358e8;
+    border-color: #9370db;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+div {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.btn-pretty {
+    background-color: #a358e8;
+    border-color: #9370db;
+}
+
+a {
+    color: #fff
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: transparent;
+    color: #531b6f;
+}
+
+a:hover, a:focus {
+    color: #531b6f;
+    text-decoration: none;
+}
+
+.btn-link:hover, .btn-link:focus {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+.btn-link {
+    color: #fff
+}
+
+
+.well-lg {
+    border: 2px solid #531b6f;
+    margin:10px;
+}
+
+h1, .h1 {
+    font-size: 36px;
+    background-color: #531b6f;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.text-pretty:active {
+    color: #e0e0e0;
+}
+
+.text-pretty:focus {
+    color: #e0e0e0;
+}
+
+.text-pretty:hover {
+    color: #e0e0e0;
+}

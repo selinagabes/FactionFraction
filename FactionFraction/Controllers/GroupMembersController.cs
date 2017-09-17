@@ -57,12 +57,13 @@ namespace FactionFraction.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,DesiredGrade")] GroupMember groupMember)
+        public async Task<IActionResult> Create([Bind("Id,Name,DesiredGrade,Email")] GroupMember groupMember)
         {
             if (ModelState.IsValid)
             {
                 var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 groupMember.AspNetUserId = aspNetUserId;
+                _context.Add(groupMember);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
