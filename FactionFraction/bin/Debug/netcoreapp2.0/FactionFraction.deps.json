@@ -4249,28 +4249,28 @@
     "Microsoft.ApplicationInsights/2.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ac2WqP25Eg3PTzHmXLHbz+EIOWferB6mUu5dEHOfmzAsVmKG0MeXyov2+dhlMDVP8BNDg/aHZg3+NRxTCUitaA==",
+      "sha512": "sha512-4dX/zu3Psz9oM3ErU64xfOHuSxOwMxN6q5RabSkeYbX42Yn6dR/kDToqjs+txCRjrfHUxyYjfeJHu+MbCfvAsg==",
       "path": "microsoft.applicationinsights/2.4.0",
       "hashPath": "microsoft.applicationinsights.2.4.0.nupkg.sha512"
     },
     "Microsoft.ApplicationInsights.AspNetCore/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WhEzHhmqDBCPcgbsCI8YWhMkmfiU+LgCCzxXBESyp3f0XSU3i+m7EBTMJpgB6dCId+bG/qMP9rVcAYW8C490yA==",
+      "sha512": "sha512-kiGmzl9Cav34dF7AHVMoJxdJJQEeLB8KZGNwX1LjImG9iem5hGk4DkHpW7/m9Nh3DrL8IKSL3mqQo+IPqWfMRQ==",
       "path": "microsoft.applicationinsights.aspnetcore/2.1.1",
       "hashPath": "microsoft.applicationinsights.aspnetcore.2.1.1.nupkg.sha512"
     },
     "Microsoft.ApplicationInsights.DependencyCollector/2.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-F1v+OE4sAHajY6QPc/8/NEO1X1WgfxFU7tstxnnGwXMBaTvqrgJhYU2cScrt4k77bCr/1Mu7V/Ny8v3xDS5glw==",
+      "sha512": "sha512-RWxdX90MY6tNF8S5lwRvJcHiBMIWwVLCxd4TGIEl3X0yAKaolY2vs4zTCvyCIVkEAMs1aInTgWkYwOjzYvAHWw==",
       "path": "microsoft.applicationinsights.dependencycollector/2.4.1",
       "hashPath": "microsoft.applicationinsights.dependencycollector.2.4.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tOQmnsQoPAbL6Du6ZFayUhtA0O46gtE7zDNTteMfAvdFKyz6VVVTpHaOKT1eny7oaiwYAPfafxDPveoPTGvTzw==",
+      "sha512": "sha512-Pp4CNfgJgKTyU+oRQYh6InA1lwcZLi5ZsfTxWwixagbRsVdWrROBFnKGw+FvbbuzKNyMn4Cg5zRv99LjqxVIJA==",
       "path": "microsoft.aspnetcore/2.0.0",
       "hashPath": "microsoft.aspnetcore.2.0.0.nupkg.sha512"
     },
@@ -4312,7 +4312,7 @@
     "Microsoft.AspNetCore.Authentication.Cookies/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EiJJkXrN9HzRiT+++XR1Ntd2UngdznAtzYweYqwRef8W+u8S+H67WFU/cfDSMuT5LGx2LK0ePnjLByDwj3OHCA==",
+      "sha512": "sha512-330xWVaI3isU9h0oaZB7CByB93F60CSstbSm4XnPObpJHXkBrW3gth+ujn0oHGyRoP7Fo1UK/kROc8gvymFGTw==",
       "path": "microsoft.aspnetcore.authentication.cookies/2.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.cookies.2.0.0.nupkg.sha512"
     },
@@ -4473,7 +4473,7 @@
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AIFJH6zvpYeJF8zOsmtyqfaKQyYy5cvV2w1VOZj5HRusFpxoslFn3qVdAMdxVaj6lCdP9DOFY6ZEbAnaXO1m4Q==",
+      "sha512": "sha512-1RrmOLCWMGS708HLgjaJfUI5CbnqehlJhS4E/27hUAWDKSNJU1iIKBzKMS6TAIJkhDIP57SwUKpHaiFSXieA9Q==",
       "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/2.0.0",
       "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.2.0.0.nupkg.sha512"
     },
@@ -4550,7 +4550,7 @@
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lNDgSYkS1iuD32m5CJfb8OnKjFVS36cm2KGP9hmVx2Ul+0EwZb+vijP0RxacOeZR02pZfQAW8dqW64tN1BOgTg==",
+      "sha512": "sha512-9h86cTjfLhNl8dh50to4sv9aVcJXDN/uaJrPsRmYl2eBzogrseERUKYAaUvMjvTGbpnv4NuTIZMnwEEU/J9AKw==",
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/2.0.0",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.2.0.0.nupkg.sha512"
     },
@@ -4585,7 +4585,7 @@
     "Microsoft.AspNetCore.Mvc/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xPt6F6WFMRLz1h/tj786vqkmz9Eso35hMDKDP71+gwSZLUwch5Yr91glntCdtgSTzYdiyHwPxyTBAVqOh1RWoQ==",
+      "sha512": "sha512-9KmSDGw3XXosv3+c7TX8An91ya+jtzbAuquHVp6t/qB1CA+MZI7r2d6n3dvUZUcKbrpmB8cfbvzbeEGv/QKp3Q==",
       "path": "microsoft.aspnetcore.mvc/2.0.0",
       "hashPath": "microsoft.aspnetcore.mvc.2.0.0.nupkg.sha512"
     },
@@ -4830,7 +4830,7 @@
     "Microsoft.AspNetCore.StaticFiles/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-37BgOXsGFJrzpQmGv03OkP7KYlCF5i6j2nFa4dAEUYabiU3SHdWCfjPxLFMsKNO3av8NFtyd3E7K2ZRoF3eWUQ==",
+      "sha512": "sha512-HBMJQ1WPdHO0thltwi7agvfis3c1Kd5HFQDgyy0nV3X4mJvhVGUnymT0+QQU+GGNK9FG/uEQNE3YDSrrBamP7w==",
       "path": "microsoft.aspnetcore.staticfiles/2.0.0",
       "hashPath": "microsoft.aspnetcore.staticfiles.2.0.0.nupkg.sha512"
     },
@@ -4956,7 +4956,7 @@
     "Microsoft.EntityFrameworkCore.Design/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FxN5TCGyR6sZMU0zCT9B8WubTK2WTCOVt/L4RdKNw3uD5RAKe0aZiGtOxtVictmNApW4aHsoPfEf7KRkojPW6Q==",
+      "sha512": "sha512-v8e4OwmK+BIm7jINmGJaQz1+r6BiFl+bGJNVUF4JQZ9H40keeTIHEgKDxdEr+24EdllfLLKTisEziq1H089TYg==",
       "path": "microsoft.entityframeworkcore.design/2.0.0",
       "hashPath": "microsoft.entityframeworkcore.design.2.0.0.nupkg.sha512"
     },
@@ -4991,14 +4991,14 @@
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Gyr6AwgT9t9M+6UX8qDROWb87HJtlpAp8SOFiL8jD6QoZlw2hjFC/n7qFOrngvorFS7f1xiZiN/65QYIekfd+A==",
+      "sha512": "sha512-mr+S07kAKXsdu9207w1ek4O1/0+y5925kMYy7gCqu15QpvfVXOLdAR0b9RQfBxmtAJPrYx6/KtfvAg70jm5zUA==",
       "path": "microsoft.entityframeworkcore.sqlserver/2.0.0",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.0.0.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Tools/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-X3HhnohvIh9qG74GG/Ut/bgDoAGWPg1kNGpy4l+PWWhK57NNIhrhLwTCJ43hvC6/HlsCHTvoSLd1SXgtHO0jTA==",
+      "sha512": "sha512-ILVI7sbnD0Pgf6B90AL3RiRdq+XRXEG4VnvuD75Fluv6p5PbYfU2tQP2VlL0oAFCVhihSgSWIQHtDjUFEE0+nw==",
       "path": "microsoft.entityframeworkcore.tools/2.0.0",
       "hashPath": "microsoft.entityframeworkcore.tools.2.0.0.nupkg.sha512"
     },
@@ -5096,7 +5096,7 @@
     "Microsoft.Extensions.Configuration.UserSecrets/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f7/hGfEtCP9u6YkOkCFca0rIMNdiOfLeqRqwQygcUU5q5fW+G1XVFFLfWCnxeRKdj62qg2iyRq7rb8Aq9F5yAw==",
+      "sha512": "sha512-Nn9Gd4MsMKAzIwXhoz/pzPlngbgZDPlbWKWLSyL4nMFAnlQ8EubbealF69JvGBcK7DwdsMV5pz7a9EZFZQF6ww==",
       "path": "microsoft.extensions.configuration.usersecrets/2.0.0",
       "hashPath": "microsoft.extensions.configuration.usersecrets.2.0.0.nupkg.sha512"
     },
@@ -5243,7 +5243,7 @@
     "Microsoft.Extensions.Logging.Debug/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kJ7+hgMM4xTtbqBLRIHFllo5fUTcfZ5yW5iCipTNJw2ArNxaYAf+ok2rrhA5r9qiiTfcKpdmDf9VZG5lN8YsIw==",
+      "sha512": "sha512-29Zn5m9yb4NEP+qbeLl+7F2lDskDfrs8NbrM8eJ+k/pYE8JksRUEFxHp1bcpGSfGP9w0pMQMOKrVcwD3u5sPog==",
       "path": "microsoft.extensions.logging.debug/2.0.0",
       "hashPath": "microsoft.extensions.logging.debug.2.0.0.nupkg.sha512"
     },
@@ -5369,7 +5369,7 @@
     "Microsoft.VisualStudio.Web.BrowserLink/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GuzTK7UGOe5Ob0CrbKY/vUkNdWGXD1GEltCWXf6i5dflAcSlquEAE8xNBBli2HHV2QmI2Pxgz/fqaeqWyANcQQ==",
+      "sha512": "sha512-+iLi1BBW/52xtKPYITk1jJSD0sJCHYy5dbOjSQZiZjnqPGjuo2LAfhz//rYAzYbyKq+kH1CO763ViGcdsMvFbA==",
       "path": "microsoft.visualstudio.web.browserlink/2.0.0",
       "hashPath": "microsoft.visualstudio.web.browserlink.2.0.0.nupkg.sha512"
     },
@@ -5397,7 +5397,7 @@
     "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-703oawiMkeJiZ5RiBdjEXtBPflORrMAjt+BKnKL1Sif/ESLP+8wkKQur1BKBKcDz6SRI3hSgu0sfrcFHKreMhA==",
+      "sha512": "sha512-14dGqnnOnNxKGrGZKFQGGzMDtQ23WVuIOZkcH5KE0LeHEhjc+9u8raAiFhXnRu8P/PHpXjbcgW/Zdq71sSqnlg==",
       "path": "microsoft.visualstudio.web.codegeneration.design/2.0.0",
       "hashPath": "microsoft.visualstudio.web.codegeneration.design.2.0.0.nupkg.sha512"
     },

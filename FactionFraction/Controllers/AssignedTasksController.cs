@@ -155,7 +155,7 @@ namespace FactionFraction.Controllers
 
         // MARK: - Utility functions
         // Determine sum of an array sum grades
-        static double SumGrades(int[] grades) {
+        private double SumGrades(int[] grades) {
             
             int total = 0;
             for (int i = 0; i < grades.Length; ++i) {
@@ -167,14 +167,14 @@ namespace FactionFraction.Controllers
 
 
         // Determine average grade from all submitted
-        static double AverageGrade(int[] grades) {
-            return Utility.SumGrades(grades) / grades.Length;    
+        private double AverageGrade(int[] grades) {
+            return SumGrades(grades) / grades.Length;    
         }
 
 
         // Determine the percentage workload given a desired grade
-        static double DetermineWorkPercentage(int[] grades, int grade) {
-            return grade / Utility.SumGrades(grades);
+        private double DetermineWorkPercentage(int[] grades, int grade) {
+            return grade / SumGrades(grades);
         } 
     }
 }
