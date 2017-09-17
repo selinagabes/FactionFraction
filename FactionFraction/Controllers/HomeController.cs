@@ -33,11 +33,47 @@ namespace FactionFraction.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Grade()
         {
-            ViewData["Message"] = "Your contact page.";
-
+            
             return View();
+        }
+        [HttpPost]
+        public IActionResult Grade(float grade)
+        {
+            
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var members = _context.GroupMembers.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+            var totalGrade = members.Select(x => x.DesiredGrade).Sum();
+            Dictionary<int, float> UserId_MinCapacity = new Dictionary<int, float>();
+            foreach (var m in members)
+            {
+                float pctWork = m.DesiredGrade / totalGrade;
+            
+                UserId_MinCapacity.Add(m.Id, pctWork);
+            }
+            var numOfMembers = members.Count();
+            var gradeTotalValue = numOfMembers * grade;
+            foreach(var user in UserId_MinCapacity)
+            {
+                var currentUser = _context.GroupMembers.Find(user.Key);
+                currentUser.FinalGrade = user.Value * gradeTotalValue;
+                _context.Update(currentUser);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(Summary));
+        }
+
+        public IActionResult Summary()
+        {
+            Dictionary<string, float> finalGradeDictionary = new Dictionary<string, float>();
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var members = _context.GroupMembers.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+            foreach(var m in members)
+            {
+                finalGradeDictionary.Add(m.Name, m.FinalGrade);
+            }
+            return View(finalGradeDictionary);
         }
 
         public IActionResult Error()
@@ -46,3 +82,4 @@ namespace FactionFraction.Controllers
         }
     }
 }
+

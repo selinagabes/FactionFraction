@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]- FactionFraction</title>
+    <title>@ViewData["Title"]- JustGroupWork</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -31,14 +31,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FactionFraction</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">JustGroupWork</a>
             </div>
             <div class="navbar-collapse collapse">
-                @*  <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>*@
+                  <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="GroupMembers" asp-action="Index">Members</a></li>
+                        <li><a asp-area="" asp-controller="AssignedTasks" asp-action="Index">Tasks</a></li>
+                        <li><a asp-area="" asp-controller="AssignedTasks" asp-action="Summary">Summary</a></li>
+                    </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
@@ -47,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - TLDL</p>
+            <p>&copy; 2017 - Just Group Work</p>
         </footer>
     </div>
 

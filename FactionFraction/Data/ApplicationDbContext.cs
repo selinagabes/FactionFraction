@@ -24,6 +24,10 @@ namespace FactionFraction.Data
             builder.Entity<GroupMember>()
                 .HasMany(a => a.AssignedTasks)
                 .WithOne(g => g.GroupMember);
+
+            builder.Entity<AssignedTask>()
+                .HasOne(g => g.GroupMember)
+                .WithMany(g => g.AssignedTasks);
         }
     }
 }

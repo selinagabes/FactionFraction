@@ -25,7 +25,11 @@ namespace FactionFraction.Controllers
         // GET: AssignedTasks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.AssignedTasks.ToListAsync());
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var assignedTasks = _context.AssignedTasks;
+            assignedTasks.Load();
+            var listTasks = await assignedTasks.Where(x => x.AspNetUserId == aspNetUserId).ToListAsync();
+            return View(listTasks);
         }
 
         // GET: AssignedTasks/Details/5
@@ -92,7 +96,6 @@ namespace FactionFraction.Controllers
                 }
             }
 
-
             return View(viewModel);
         }
 
@@ -101,10 +104,21 @@ namespace FactionFraction.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Estimate(EstimateViewModel assignedTask)
+        public IActionResult Estimate(EstimateViewModel assignedTask)
         {
+            CalculateEstimatedTimeForTasks(assignedTask.ProposedMinutes);
+            AssignTasks();
+            return RedirectToAction(nameof(TaskSummary));
+        }
 
-            return View(assignedTask);
+        // GET: Task Summary
+        public IActionResult TaskSummary()
+        {
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var taskList = _context.AssignedTasks.Include(m => m.GroupMember).Where(x => x.AspNetUserId == aspNetUserId).ToList();
+
+            // set up view
+            return View(taskList);
         }
 
         // GET: AssignedTasks/Edit/5
@@ -191,38 +205,8 @@ namespace FactionFraction.Controllers
         {
             return _context.AssignedTasks.Any(e => e.Id == id);
         }
-
-
-        // MARK: - Utility functions
-        // Determine sum of an array sum grades
-        static double SumGrades(int[] grades)
-        {
-
-            int total = 0;
-            for (int i = 0; i < grades.Length; ++i)
-            {
-                total += grades[i];
-            }
-
-            return total;
-        }
-
-
         // Determine average grade from all submitted
-        private double AverageGrade(int[] grades)
-        {
-            return SumGrades(grades) / grades.Length;
-        }
-
-
-        // Determine the percentage workload given a desired grade
-        private double DetermineWorkPercentage(int[] grades, int grade)
-        {
-            return
-
-                grade / SumGrades(grades);
-        }
-
+       
         // Calculate estimated completion time for each task 
         private void CalculateEstimatedTimeForTasks(List<SuggestedMinute> suggested)
         {
@@ -290,25 +274,70 @@ namespace FactionFraction.Controllers
             }
 
 
-
-
             // Sort the tasks ascending in estimated completion time
             tasks = tasks.OrderBy(task => task.EstimatedMinutes).ToList();
             var kvp_UserId_MinCapacity = UserId_MinCapacity.OrderBy(x => x.Value).ToList();
-            for(int i = 0; i < kvp_UserId_MinCapacity.Count(); i++)
+            var tasksCopy = tasks.ToList();
+            // brute force, just give tasks to alternating people:
+            var i = 0;
+            while (tasksCopy.Any())
             {
-                int j = 0;
-                var capacity = kvp_UserId_MinCapacity[i].Value;
-                while(capacity > -10)
-                {
-                    capacity -= tasks[j].EstimatedMinutes;
-                    if (capacity <= -10)
-                        break;
-                    var currentMember = _context.GroupMembers.Find(kvp_UserId_MinCapacity[i].Key);
-                    currentMember.AssignedTasks.Add(tasks[j]);
-                }
+                i = i % kvp_UserId_MinCapacity.Count;
+                var taskToAssign = tasksCopy.First();
+                var userMin = kvp_UserId_MinCapacity[i++];
+                var currentMember = _context.GroupMembers.Find(userMin.Key);
+                currentMember.AssignedTasks.Add(taskToAssign);
+                _context.Update(currentMember);
+                _context.SaveChanges();
+                // remove task from list to be assigned.
+                tasksCopy.Remove(taskToAssign);
+
             }
-            List<GroupMember> candidates = members;
+
+
+            //while (tasksCopy.Any())
+            //{
+            //    // assigning one task to a user.
+            //    var taskToAssign = tasksCopy.First();
+            //    // check to see if user has run out of capacity: 
+            //    var userMin = kvp_UserId_MinCapacity.First();
+            //    if (userMin.Value < -10 && kvp_UserId_MinCapacity.Count > 1)
+            //    {
+            //        // need to move to next user.
+            //        kvp_UserId_MinCapacity.Remove(userMin);
+            //    }
+            //    else
+            //    {
+            //        // assign task to current user.
+            //        var currentMember = _context.GroupMembers.Find(userMin.Key);
+            //        currentMember.AssignedTasks.Add(taskToAssign);
+            //        _context.Update(currentMember);
+            //        _context.SaveChanges();
+            //        // remove task from list to be assigned.
+            //        tasksCopy.Remove(taskToAssign);
+            //    }
+
+            //}
+            //int j = 0;
+            //for (int i = 0; i < kvp_UserId_MinCapacity.Count(); i++)
+            //{
+            //    var capacity = kvp_UserId_MinCapacity[i].Value;
+            //    while (capacity > -20)//threshold for overages
+            //    {
+            //        while (j < tasks.Count && tasks[j].GroupMember != null)
+            //            j++;
+
+            //        capacity -= tasks[j].EstimatedMinutes;
+            //        if (capacity <= -20 && !tasks.Any(x => x.GroupMember == null))
+            //            break;
+            //        var currentMember = _context.GroupMembers.Find(kvp_UserId_MinCapacity[i].Key);
+            //        currentMember.AssignedTasks.Add(tasks[j]);
+            //        _context.Update(currentMember);
+            //        _context.SaveChanges();
+            //        j++;
+            //    }
+            //}
+            //List<GroupMember> candidates = members;
 
             // Find lowest completion time amongst all candidates for each task
             //for (var i = 0; i < tasks.Count; ++i)
@@ -338,7 +367,7 @@ namespace FactionFraction.Controllers
             //    bestMember.AssignedTasks.Add(tasks[i]);
 
             //    candidates.Remove(bestMember);
-            }
+            //}
         }
     }
 }

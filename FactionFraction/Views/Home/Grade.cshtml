@@ -1,0 +1,19 @@
+﻿@model float
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Final Grade</h1>
+<div class="well-lg">
+    <div class="container-fluid">
+        <center class="row">
+            <form asp-action="Grade">
+                <center style="margin:15px;">
+                    <input type="text" name="grade" class="circle" style="background-color:#fff; color:#531b6f" placeholder="Enter your grade!" />
+                </center>
+                <div class="form-group">
+                    <input type="submit" value="Grade" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

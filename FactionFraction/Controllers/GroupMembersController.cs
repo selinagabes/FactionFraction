@@ -25,7 +25,8 @@ namespace FactionFraction.Controllers
         // GET: GroupMembers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GroupMembers.ToListAsync());
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return View(await _context.GroupMembers.Where(x=>x.AspNetUserId == aspNetUserId).ToListAsync());
         }
 
         // GET: GroupMembers/Details/5

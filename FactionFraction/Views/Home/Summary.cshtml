@@ -1,8 +1,9 @@
-﻿@model List<GroupMember>
+﻿@model Dictionary<string, float>  
 @{
-    ViewData["Title"] = "Dashboard";
+
+    ViewData["Title"] = "Final";
 }
-<h1>Dashboard <a href="@Url.Action("Grade","Home")" class="btn btn-success pull-right">Submit Final Grade</a></h1>
+<h1>Click to see!</h1>
 <div class="well-lg">
     <div class="container-fluid">
         <div class="row">
@@ -11,18 +12,13 @@
             {
                 <div class="col-md-4">
                     <div class="circle">
-                        <a href="#" class="circle-toggle text-pretty" data-toggle="popover" data-trigger="focus" data-content="<a href='/GroupMembers/Details/@m.Id' class='btn btn-success'>Track</button><a href='/GroupMembers/Edit/@m.Id' class='btn btn-pretty'>View</button>">@m.Name</a>
+                        <a href="#" class="circle-toggle text-pretty" data-toggle="popover" data-trigger="focus" data-content="@m.Value">@m.Key</a>
                     </div>
                 </div>
             }
 
         </div>
     </div>
-</div>
-
-<div class="row text-center">
-    <a href="@Url.Action("Index","GroupMembers")" class="btn btn-pretty pull-right">See List</a>
-
 </div>
 
 

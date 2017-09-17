@@ -8,6 +8,10 @@ namespace FactionFraction.Models
 {
     public class GroupMember
     {
+        public GroupMember()
+        {
+            AssignedTasks = new List<AssignedTask>();
+        }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
