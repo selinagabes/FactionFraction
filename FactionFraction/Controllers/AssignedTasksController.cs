@@ -218,7 +218,127 @@ namespace FactionFraction.Controllers
         // Determine the percentage workload given a desired grade
         private double DetermineWorkPercentage(int[] grades, int grade)
         {
-            return grade / SumGrades(grades);
+            return
+
+                grade / SumGrades(grades);
+        }
+
+        // Calculate estimated completion time for each task 
+        private void CalculateEstimatedTimeForTasks(List<SuggestedMinute> suggested)
+        {
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            List<AssignedTask> tasks = _context.AssignedTasks.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+            List<GroupMember> members = _context.GroupMembers.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+
+            List<int> taskTotal = new List<int>();
+            List<int> timeTotal = new List<int>();
+
+            for (int i = 0; i < tasks.Count; ++i)
+            {
+                foreach (var member in members)
+                {
+                    var currentTaskList = suggested.Where(x => x.TaskId == tasks[i].Id
+                                                            && x.GroupMemberId == member.Id).Select(x => x.Length).ToList();
+                    taskTotal.Add(currentTaskList.Sum());
+                }
+
+                // Set estimated completion time for this task              
+                var assignedTask = _context.AssignedTasks.SingleOrDefault(m => m.Id == tasks[i].Id);
+                assignedTask.EstimatedMinutes = (int)Math.Round(taskTotal.Average());
+                _context.Update(assignedTask);
+                _context.SaveChanges();
+                taskTotal.Clear();
+            }
+        }
+
+
+        // Determine the completion time for the whole project based already defined estimated times
+        private float EstimatedProjectCompletionTime()
+        {
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            List<AssignedTask> tasks = _context.AssignedTasks.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+
+            float totalTime = 0;
+
+            // Sum the average times for all tasks (should already be set!!)
+            for (int i = 0; i < tasks.Count; ++i)
+            {
+                totalTime += tasks[i].EstimatedMinutes;
+            }
+
+            return totalTime;
+        }
+
+
+        // Map tasks to group members based exclusively on task completion estimations
+        private void AssignTasks()
+        {
+            var aspNetUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            List<AssignedTask> tasks = _context.AssignedTasks.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+            List<GroupMember> members = _context.GroupMembers.Where(x => x.AspNetUserId == aspNetUserId).ToList();
+            
+            //Calculate percentage weight
+            //Assign a capacity
+            var totalGrade = members.Select(x => x.DesiredGrade).Sum();
+            Dictionary<int, float> UserId_MinCapacity = new Dictionary<int, float>();
+            var projectCompletionTime = EstimatedProjectCompletionTime();
+            foreach (var m in members)
+            {
+                float pctWork = m.DesiredGrade / totalGrade;
+                float capacity = pctWork * projectCompletionTime;
+                UserId_MinCapacity.Add(m.Id, capacity);
+            }
+
+
+
+
+            // Sort the tasks ascending in estimated completion time
+            tasks = tasks.OrderBy(task => task.EstimatedMinutes).ToList();
+            var kvp_UserId_MinCapacity = UserId_MinCapacity.OrderBy(x => x.Value).ToList();
+            for(int i = 0; i < kvp_UserId_MinCapacity.Count(); i++)
+            {
+                int j = 0;
+                var capacity = kvp_UserId_MinCapacity[i].Value;
+                while(capacity > -10)
+                {
+                    capacity -= tasks[j].EstimatedMinutes;
+                    if (capacity <= -10)
+                        break;
+                    var currentMember = _context.GroupMembers.Find(kvp_UserId_MinCapacity[i].Key);
+                    currentMember.AssignedTasks.Add(tasks[j]);
+                }
+            }
+            List<GroupMember> candidates = members;
+
+            // Find lowest completion time amongst all candidates for each task
+            //for (var i = 0; i < tasks.Count; ++i)
+            //{
+            //    GroupMember bestMember = new GroupMember();
+
+            //    // If all members have been assigned, "refill" candiates for more tasks!
+            //    if (candidates.Count == 0)
+            //    {
+            //        candidates = members;
+            //    }
+
+            //    foreach (var member in candidates)
+            //    {
+
+            //        // If this is the shortest proposed completion time, update new shortest
+            //        if (member.ProposedMinutes.ToList()[i].Length < bestMember.ProposedMinutes.ToList()[i].Length)
+            //        {
+            //            bestMember = member;
+            //        }
+            //    }
+
+
+            //    // Set this task's group member, add task to group member's task list
+            //    // TODO: Save entity
+            //    tasks[i].GroupMember = bestMember;
+            //    bestMember.AssignedTasks.Add(tasks[i]);
+
+            //    candidates.Remove(bestMember);
+            }
         }
     }
 }
